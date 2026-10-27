@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { Mail, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import { PrimaryNav } from "@/components/layout/PrimaryNav";
 import { ButtonLink } from "@/components/ui/ButtonLink";
-import { email, header, nav } from "@/content/site";
-import Link from "next/link";
+import { header } from "@/content/site";
 
 export function MobileMenu() {
   const [open, setOpen] = useState(false);
@@ -14,7 +14,7 @@ export function MobileMenu() {
   }
 
   return (
-    <div className="md:hidden">
+    <div className="lg:hidden">
       <button
         type="button"
         className="inline-flex h-11 w-11 items-center justify-center text-ridgeway-deep"
@@ -32,33 +32,26 @@ export function MobileMenu() {
         </span>
       </button>
       <div
-        id="mobile-nav"
         inert={!open}
-        className={`mobile-menu-panel absolute top-full right-0 left-0 border-b border-rule bg-paper md:hidden ${open ? "is-open" : ""}`}
+        className={`mobile-menu-panel absolute top-full right-0 left-0 border-b border-rule bg-paper lg:hidden ${open ? "is-open" : ""}`}
       >
-        <nav
-          aria-label="Menu"
-          className="mx-auto flex w-full max-w-[1200px] flex-col px-6 py-4"
+        <div
+          id="mobile-nav"
+          className="mx-auto flex w-full max-w-[1200px] flex-col px-6 py-4 md:px-10"
         >
-          {nav.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="flex min-h-11 items-center text-ridgeway"
-              onClick={close}
-            >
-              {item.label}
-            </Link>
-          ))}
+          <PrimaryNav
+            label="Menu"
+            onNavigate={close}
+            className="flex flex-col"
+          />
           <ButtonLink
-            href={`mailto:${email}`}
-            className="mt-3 self-start"
+            href={header.cta.href}
             onClick={close}
+            className="mt-4 self-start"
           >
-            <Mail aria-hidden="true" size={20} />
-            {header.emailLabel}
+            {header.cta.label}
           </ButtonLink>
-        </nav>
+        </div>
       </div>
     </div>
   );

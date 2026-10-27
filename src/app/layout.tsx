@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     template: "%s | Ridgeway Facilities Management",
   },
   description:
-    "Reactive repairs, planned maintenance and small works for housing associations, care homes and offices in and around Harlow.",
+    "Reactive repairs, planned maintenance and small works for housing associations, care homes and commercial offices in and around Harlow, Essex.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

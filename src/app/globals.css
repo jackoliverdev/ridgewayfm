@@ -75,6 +75,11 @@ p {
   color: var(--color-paper);
 }
 
+.sign-panel h1 {
+  font-size: clamp(2.15rem, 2.2vw + 1rem, 3.25rem);
+  line-height: 1.06;
+}
+
 :focus {
   outline: none;
 }
